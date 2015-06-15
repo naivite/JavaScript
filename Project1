@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Let's Learn Maths!  </title>
+<!--TODO
+1. The user will enter their name and age.
+put into form on page. click text boxes maybe?
+2. Allow the user to change the background color
+input to change if they want to
+3. The program will select appropriate problems for the user based on age,
+using the following information:
+Age Problems
+5 - 7 Basic addition & subtraction
+8 -10
+Basic addition, subtraction,
+multiplication & division
+4. The program will display via JavaScript:
+a. The user’s name
+b. The math problem and place for the user to enter the answer
+c. In a separate window, whether the answer was correct or incorrect
+d. A running total of how many they got right and wrong
+The program allows three tries to get the problem correct, and provides
+the answer after the fourth attempt.
+//-->
+<script type="text/javascript">
+<!--
+
+//-->
+</script>
+</head>
+<body>
+<!--
+initialize function above should wipe out all varialbes and do first off setup
+allowing fto choose name and age
+
+TODO 
+	build new function to do the maths selection based on ages
+//-->
+
+
+
+<script type="text/JavaScript">
+<!--
+var colourInput;
+
+
+	//function to change background colour
+	function changeBackground()
+	{
+		colourInput = prompt("What colour would you like the background to become?");
+		console.log(colourInput);
+		document.body.style.backgroundColor = colourInput;
+		
+	}
+
+	
+	//function to invoke lower maths
+	function generateLowerMaths()
+	{
+	console.log("generateLowerMaths");
+	//randomly select if question will be basic addition or subtraction and then generate a random number of numbers with
+	//which to do these maths
+	//generates up to ten maths questions
+	var numberOfQestions = (Math.floor( Math.random() * 10 ) + 1);
+
+
+	console.log("number of questions = " + numberOfQestions);
+	
+	// makes either + or - based on coin flip essentially
+	var arithOperand = ["+", "-"][Math.floor(Math.random()*2)];
+	console.log("signTest = " + arithOperand);
+	}	
+	
+		
+	//call question generate function sending as variable artithmetic sign and getting 'correct' answer as a return
+	//check return against input?
+	 
+	function generateArithQuestion()
+	{
+		arithQuestion = '';
+	//loop to generate questions 
+			//arithQuestion will probably have to be added to an array after each iteration.
+		for (i = 0; i < numberOfQestions; i++){
+			var a = Math.floor(Math.random() * 10) + 1;
+			var b = Math.floor(Math.random() * 10) + 1;
+			arithQuestion = "What is the result of " + a + " " + arithOperand + " " + b + "?";
+			console.log(arithQuestion);
+		}
+//create five element array containing text of problems?
+
+
+
+function ask() {
+    var a = Math.floor(Math.random() * 10) + 1;
+    var b = Math.floor(Math.random() * 10) + 1;
+    var op = ["*", "+", "/", "-"][Math.floor(Math.random()*4)];
+    return prompt("How much is " + a + " " + op + " " + b + "?") == eval( a + op + b);
+}
+
+var questions = [ask(), ask(), ask(), ask(), ask()],
+    total = questions.length,
+    correct = questions.filter(Boolean).length;
+
+alert( "You got "+correct+"/"+total+" correctly");
+
+
+
+
+
+	}
+	//
+	
+	//end generateLowerMaths
+	
+
+	//function to invoke higher maths
+	function generateHigherMaths()
+	{
+
+
+	//end generateHigherMaths	
+	}
+	
+	
+	//!!TODO get input function pull shit from area throw into whatever var is needed with whatever function is needed
+	
+	function initialize(){
+		if ((name == "") || (name == null)) {
+		getName();
+		}
+		if ((age == "") || (age == null)) {
+		getAge();
+		}
+	
+	}
+	
+	function ifElseTest()
+	{
+		var answer = false;
+		answer = confirm("")
+	
+	
+	}
+//hard coded age for testing 5-7 +- 8-10 +-*/  
+var age = 5 || '';
+var name;
+var nameInput;
+var ageCategory = 1;
+	
+	function confirmName(nameInput)
+	{																					//still need to finish loop to break out
+		do {
+			if (confirm ("Is your name " + nameInput + "?")){
+				cofirmationBool = true;
+			}
+			else {
+				confirmationBool = false;
+			}
+
+		} while ((confirmationBool != true))
+		
+
+//		if (confirm("Is your name " + nameInput + "?") == true )
+//		{
+//		return true;
+//		}
+//		{
+//			name = nameInput;
+//		}
+//		else {
+//			while (name != null) {
+//				alert("Please give your correct name then.");
+//				getName();
+//			} while (name != null)
+//
+//
+//		}	
+	}
+	//function to prompt user for their name. just for record keeping really. probably loop to confirm each 'get'
+	//name as text box in form user input name. on loose focus check text and confirm name
+	function getName()
+	{
+		//while (name != null) {
+			name = prompt("What is your name?");
+			if ((name != "") || (name != null))
+			{
+				confirmName(name);
+			}
+		//}
+		document.getElementById("nameBox").value = name;
+	}
+
+	//function to prompt user for their age. Loop to follow to force specific range.
+	//age as text box. on loose focus confirm age then set for variable
+	function getAge()
+	{
+		age = prompt("Please enter your age.");
+	}
+	function checkAge(age)
+	{
+		if (age < 5) {ageCategory = 1;}
+		if ((age >=5) && (age <= 7)) {ageCategory = 2;}
+		if ((age >7) && (age<=10)) {ageCategory = 3;}
+		if (age > 10) {ageCategory = 4;}
+		alert("age var is " + age + "\n + ageCategory = " + ageCategory);
+		console.log("age =" + age + " and ageCategory =" + ageCategory);
+	}
+
+	function generateMaths(ageCheck)
+	{
+		checkAge(age);
+		console.log("Generate maths Clicked" + ageCategory);
+		switch(ageCategory)
+		{
+			//case one indicates age below 5, this should not hoppen and will now error out
+			case 1:
+				console.log("case 1");
+				alert("How did you get here? \n" + "Go back home to mommy and daddy");
+				break;
+
+			//age between five and seven. lower category maths including +- only
+			case 2:
+				console.log("case 2");
+				generateLowerMaths();
+				break;
+
+			//age between eight and ten. higher category maths including +-*/
+			case 3:
+			console.log("case 3");
+				generateHigherMaths();
+				break;
+
+			//age above ten this should also not happen and should error out
+			case 4:
+			console.log("case 4");
+			alert("How did you get here? \n" + "You're much to old and should go back home.");
+			break;
+
+		}
+		console.log(ageCategory);
+		
+	}
+
+//document.getElementById('ageBox');
+//-->
+</script>
+
+
+
+<br />
+
+Name: <input id=nameBox type=textbox value=name  onclick="getName()" onfocus="getName()" ></input><br />
+Age: <input id=ageBox type=textbox value=age disabled=true></input><br /> 
+
+
+<p>
+<input type=submit value="Change Background Color" onclick="changeBackground()"></input>
+</p>
+
+<br /><br />
+<center>
+<input type=submit value="Let's Do Some Maths!" onclick="generateMaths(age)"></input>
+</center>
+
+</body>
+</html>
